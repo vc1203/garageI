@@ -25,7 +25,7 @@ section {
   scroll-margin-top: 100px;
 }
 
-h2, h3 { font-family: 'Playfair Display', serif; color: var(--silver); }
+h2, h3 { font-family: 'Inter', serif; color: var(--silver); }
 h2 { font-size: 36px; margin-bottom: 20px; }
 h3 { font-size: 24px; margin-bottom: 10px; }
 p { color: #b8c0cc; }
@@ -133,10 +133,14 @@ header h1 img {
 
 /* --- セクション別スタイル --- */
 .hero {
-  height: 100vh;
-  background: linear-gradient(rgba(11, 19, 32, 0.4), rgba(11, 19, 32, 0.4)), url("img/top_2.webp") center/cover;
+  height: 70vh;
+  min-height: 400px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: url("img/top_2.webp") center/cover;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .hero h1 { font-size: 52px; margin: 0; }
 
@@ -295,7 +299,7 @@ footer {
 
 
 /* --- アニメーション --- */
-.fade { opacity: 0; transform: translateY(40px); transition: 1s; }
+.fade { opacity: 0; transform: translateY(60px); transition: 1.5s; }
 .fade.show { opacity: 1; transform: translateY(0); }
 
 
@@ -347,6 +351,18 @@ footer {
   .menu-trigger span:nth-child(1) { top: 0; }
   .menu-trigger span:nth-child(2) { top: 50%; }
   .menu-trigger span:nth-child(3) { bottom: 0; }
+
+  .menu-trigger.active span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  }
+  .menu-trigger.active span:nth-child(2) {
+  opacity: 0;
+  }
+  .menu-trigger.active span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+  }
 
 /* メニューを隠す */
   .nav-content {
