@@ -779,3 +779,119 @@ footer {
   .thanks-justify-box, .thanks-notice-box { text-align: left; } /* スマホは均等割付より左寄せが読みやすいため */
   .thanks-back-block-btn { max-width: 100%; }
 }
+
+/* ==========================================================================
+   News（更新情報）セクション（見出し独立・ボックス内包型）
+   ========================================================================== */
+#news {
+  background: transparent; /* section全体の背景は透明に */
+  padding: 80px 5%;        /* 他の共通sectionと同じ左右5%の余白で「I」の左ツラを固定 */
+  max-width: 1200px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+/* ボックスの外に出た見出し：他のセクションのh2と完全に見た目・位置が同期します */
+#news h2 {
+  font-size: 36px;
+  letter-spacing: 0.1em;
+  margin: 0 0 30px 0; /* 下の紺ボックスとの間に綺麗な余白を確保 */
+  line-height: 1;
+}
+
+/* ★大改造：紺背景ボックス。ここがINFORMATIONの「I」の真下（ツラ）から始まります */
+.news-inner {
+  background: var(--deep); /* 紺色の背景をこのリストの枠だけに適用 */
+  padding: 30px 40px;      /* ニュース内容を内側に入れ込むための余白（上下を少しスマートに調整） */
+  border-radius: 4px;      /* 微小な角丸 */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ニュースリスト構造 */
+.news-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 個々の更新情報行 */
+.news-item {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid rgba(223, 230, 239, 0.08); /* 文字の下の薄い線 */
+  transition: background-color 0.3s ease;
+}
+.news-item:last-child {
+  border-bottom: none; /* 一番下の行の線は消してスッキリさせる */
+}
+
+/* マウスホバー時 */
+.news-item:not(.is-empty):hover {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+/* 日付 */
+.news-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--silver);
+  font-weight: 500;
+  width: 130px;
+  flex-shrink: 0;
+}
+
+/* タグ（INFOなど） */
+.news-category {
+  font-size: 0.7rem;
+  font-weight: bold;
+  background: rgba(255, 82, 143, 0.1);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-right: 30px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* 本文テキスト */
+.news-text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #e8ecf1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* まだ情報がない行の暗めデザイン */
+.news-item.is-empty {
+  border-bottom: 1px solid rgba(223, 230, 239, 0.03);
+}
+.news-item.is-empty:last-child {
+  border-bottom: none;
+}
+.news-item.is-empty .news-date,
+.news-item.is-empty .news-text {
+  color: rgba(184, 192, 204, 0.2);
+}
+.news-item.is-empty .news-category {
+  background: rgba(255, 255, 255, 0.01);
+  color: rgba(184, 192, 204, 0.2);
+}
+
+/* レスポンシブ表示（スマホ対応） */
+@media (max-width: 650px) {
+  .news-inner {
+    padding: 20px 15px; /* スマホ時はボックス内の余白をタイトにして文字幅を広く */
+  }
+  .news-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 16px 5px;
+  }
+  .news-date { width: auto; }
+  .news-category { margin-right: 0; }
+  .news-text { white-space: normal; }
+}
