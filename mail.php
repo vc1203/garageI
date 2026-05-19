@@ -41,87 +41,120 @@ if (mb_send_mail($to_email, $subject, $body, $headers)) {
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>お問い合わせ | 株式会社 両角佛壇</title>
-<meta name="Description" content="両角仏壇お問い合わせフォームです。仏壇・墓石・葬儀のことなど、なんでもお気軽にご相談ください。">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../assets/css/style.css">
-<link rel="stylesheet" href="../assets/css/contact.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | ガレージI</title>
+<meta name="description" content="長野県岡谷市神明町にあるロードスター専門店ガレージIへのお問い合わせフォームです。">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="header"></div>
-
-<main class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-      <div class="contact-card">
-        <div class="contact-header text-center mb-5">
-          <h2 class="fw-bold">お問い合わせ</h2>
-          <p class="text-secondary mt-3">仏壇・墓石のご相談、お見積りなど<br class="d-sm-none">お気軽にお問い合わせください。</p>
-        </div>
-    
-        <form action="mail.php" method="POST" onsubmit="return confirm('この内容で送信してもよろしいですか？')">
-          <div class="row g-4"> <div class="col-md-6">
-              <label class="form-label fw-bold">お名前 <span class="badge bg-danger ms-2">必須</span></label>
-              <input type="text" name="name" class="form-control custom-input" placeholder="例：両角 太郎" required>
-            </div>
-    
-            <div class="col-md-6">
-              <label class="form-label fw-bold">フリガナ <span class="badge bg-danger ms-2">必須</span></label>
-              <input type="text" name="kana" class="form-control custom-input" placeholder="例：モロズミ タロウ" required>
-            </div>
-
-            <div class="col-12">
-              <label class="form-label fw-bold">メールアドレス <span class="badge bg-danger ms-2">必須</span></label>
-              <input type="email" name="email" class="form-control custom-input" placeholder="example@mail.com" required>
-            </div>
-
-            <div class="col-12">
-              <label class="form-label fw-bold">電話番号 <span class="badge bg-secondary ms-2">任意</span></label>
-              <input type="tel" name="tel" class="form-control custom-input" placeholder="000-0000-0000">
-            </div>
-
-            <div class="col-12">
-              <label class="form-label fw-bold">お問い合わせ項目 <span class="badge bg-danger ms-2">必須</span></label>
-              <select name="item" class="form-select custom-input" required>
-                <option value="" selected disabled>項目を選択してください</option>
-                <option value="終活相談">終活相談</option>
-                <option value="仏壇・仏具について">仏壇・仏具について</option>
-                <option value="墓石について">墓石について</option>
-                <option value="位牌について">墓石について</option>
-                <option value="葬儀について">葬儀について</option>
-                <option value="その他">その他</option>
-              </select>
-            </div>
-
-            <div class="col-12">
-              <label class="form-label fw-bold">お問い合わせ内容 <span class="badge bg-danger ms-2">必須</span></label>
-              <textarea name="message" class="form-control custom-input" rows="6" placeholder="ご相談内容をご記入ください。" required></textarea>
-            </div>
-
-            <div class="col-12 text-center mt-5">
-              <button type="submit" name="action" value="submit" class="contact-submit-btn">入力内容を確認して送信する</button>
-            </div>
-          </div>
-        </form>
-      </div>
+<header>
+  <nav class="nav-container">
+    <h1><a href="#"><img src="img/garageI.webp" alt="GARAGE I"></a></h1>
+    <button class="menu-trigger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-content">
+      <ul class="nav-menu">
+        <li><a href="#company">会社案内</a></li>
+        <li><a href="#inventory">新・中古車販売</a></li>
+        <li><a href="#custom">カスタム</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+      <ul class="nav-sns-list">
+        <li>
+          <a href="https://www.youtube.com/@garagei7617" target="_blank" rel="noopener noreferrer" class="youtube-link" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/garagei_komaba.isamu/" target="_blank" rel="noopener noreferrer" class="insta-link" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
     </div>
-  </div>
+  </nav>
+</header>
+
+
+<main style="padding-top: 40px;">
+  <section class="form-page-section">
+    <div class="form-header">
+      <h2>CONTACT</h2>
+      <p>お問い合わせ</p>
+      <span class="form-desc-text">車両在庫のご確認、カスタム・メンテナンスのご相談など、お気軽にお問い合わせください。</span>
+    </div>
+    
+    <div class="contact-card-wrap">
+      <form action="mail.php" method="POST" onsubmit="return confirm('この内容で送信してもよろしいですか？')">
+        <div class="contact-form-grid">
+          
+          <div class="form-group-half">
+            <label class="form-label">お名前 <span class="badge-required">必須</span></label>
+            <input type="text" name="name" class="form-control" placeholder="例：岡谷 太郎" required>
+          </div>
+  
+          <div class="form-group-half">
+            <label class="form-label">フリガナ <span class="badge-required">必須</span></label>
+            <input type="text" name="kana" class="form-control" placeholder="例：オカヤ タロウ" required>
+          </div>
+  
+          <div class="form-group-full">
+            <label class="form-label">メールアドレス <span class="badge-required">必須</span></label>
+            <input type="email" name="email" class="form-control" placeholder="example@mail.com" required>
+          </div>
+  
+          <div class="form-group-full">
+            <label class="form-label">電話番号 <span class="badge-optional">任意</span></label>
+            <input type="tel" name="tel" class="form-control" placeholder="000-0000-0000">
+          </div>
+  
+          <div class="form-group-full">
+            <label class="form-label">お問い合わせ項目 <span class="badge-required">必須</span></label>
+            <select name="item" class="form-select" required>
+              <option value="" selected disabled>項目を選択してください</option>
+              <option value="中古車在庫・購入について">中古車在庫・購入について</option>
+              <option value="カスタム・チューニング相談">カスタム・チューニング相談</option>
+              <option value="車検・整備・メンテナンス">車検・整備・メンテナンス</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+  
+          <div class="form-group-full">
+            <label class="form-label">お問い合わせ内容 <span class="badge-required">必須</span></label>
+            <textarea name="message" class="form-control" rows="6" placeholder="ご相談内容をご記入ください。" required></textarea>
+          </div>
+  
+          <div class="form-submit-wrap">
+            <button type="submit" name="action" value="submit" class="contact-submit-btn">入力内容を確認して送信する</button>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+  </section>
 </main>
 
-<div id="footer"></div>
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <img src="img/garageI.webp" alt="GARAGE I">
+      <p class="copyright pc-only">© 2026 GARAGE I. All Rights Reserved.</p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-item"><span class="icon"><i class="fa-solid fa-location-dot"></i></span><span>394-0004 長野県岡谷市神明町2丁目1-28</span></div>
+      <div class="footer-item"><span class="icon"><i class="fa-solid fa-phone"></i></span><span>0266-24-5086（10:00〜17:00）</span></div>
+      <div class="footer-item"><span class="icon"><i class="fa-solid fa-envelope"></i></span><span>yajapa@yahoo.co.jp</span></div>
+    </div>
+    <p class="copyright sp-only">© 2026 GARAGE I. All Rights Reserved.</p>
+  </div>
+</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/js/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

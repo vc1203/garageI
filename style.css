@@ -841,19 +841,6 @@ footer {
   flex-shrink: 0;
 }
 
-/* タグ（INFOなど） */
-.news-category {
-  font-size: 0.7rem;
-  font-weight: bold;
-  background: rgba(255, 82, 143, 0.1);
-  color: var(--accent);
-  padding: 2px 8px;
-  border-radius: 2px;
-  margin-right: 30px;
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-}
-
 /* 本文テキスト */
 .news-text {
   margin: 0;
