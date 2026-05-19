@@ -140,18 +140,65 @@ header h1 img {
 
 .hero-img-wrap {
   width: 100%;
-  height: 45vh; /* 大きすぎず小さすぎない絶妙なサイズ感 */
+  height: 45vh;
   min-height: 320px;
   max-height: 480px;
   overflow: hidden;
-  border-radius: 4px; /* サイト全体のカードの丸みに合わせて少しだけ角を丸く */
+  border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative; /* ドットの絶対配置の基準 */
 }
 
-.hero-img {
+/* スライドショー */
+.slideshow {
   width: 100%;
   height: 100%;
-  background: url("img/top_2.webp") center/cover no-repeat;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* ドットナビ */
+.slide-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .hero-text-box {
@@ -430,13 +477,14 @@ footer {
 }
 
 @media(max-width: 600px) {
-  header { padding: 20px 5%; }
+  header { padding: 15px 5%; }
   header h1 img { height: 35px; }
   .grid-3 { grid-template-columns: 1fr; }
   .hero-section { padding: 0 4% 20px 4%; }
   .hero-img-wrap { height: 30vh; min-height: 220px; }
   .hero-text-box { padding: 35px 10px 10px 10px; }
-  .hero-title { font-size: 28px; }
+  .hero-title { font-size: 32px; line-height: 1.3; }
+  h2 { font-size: 27px; line-height: 1.4; }
   .hero-desc { font-size: 0.9rem; }
   .nav-menu { gap: 10px; }
   .nav-menu a { font-size: 0.8rem; }

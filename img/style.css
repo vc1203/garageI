@@ -17,6 +17,14 @@ body {
   line-height: 1.6;
 }
 
+/* --- 共通コンポーネント --- */
+section {
+  padding: 80px 5%;
+  max-width: 1200px;
+  margin: auto;
+  scroll-margin-top: 100px;
+}
+
 h2, h3 { font-family: 'Inter', serif; color: var(--silver); }
 h2 { font-size: 36px; margin-bottom: 20px; }
 h3 { font-size: 24px; margin-bottom: 10px; }
