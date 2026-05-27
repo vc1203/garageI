@@ -293,6 +293,8 @@ header h1 img {
   background: rgba(255, 82, 143, 0.05);
   padding: 30px;
   border: 1px dashed var(--accent);
+  box-sizing: border-box; /* paddingを含めた幅計算に統一 */
+  overflow: hidden;       /* 万一はみ出す要素をクリップ */
 }
 
 .company-container {
@@ -448,7 +450,7 @@ footer {
   .feature-grid { grid-template-columns: 1fr; gap: 20px; }
 
   .grid-3 { grid-template-columns: 1fr 1fr; }
-  .nav-menu { gap: 15px; }
+  .nav-menu { gap: 30px; }
 
 }
 
@@ -488,7 +490,7 @@ footer {
   .hero-desc { font-size: 0.9rem; }
   .nav-menu { gap: 10px; }
   .nav-menu a { font-size: 0.8rem; }
-  .cta-btn { width: 100%; text-align: center; }
+  .cta-btn { width: 100%; max-width: 100%; box-sizing: border-box; text-align: center; }
 }
 
 
@@ -754,26 +756,14 @@ footer {
 }
 
 /* ==========================================================================
-   News（更新情報）セクション（見出し独立・ボックス内包型）
+   News（更新情報）セクション
    ========================================================================== */
-#news {
-  background: transparent; /* section全体の背景は透明に */
-  padding: 80px 5%;        /* 他の共通sectionと同じ左右5%の余白で「I」の左ツラを固定 */
-  max-width: 1200px;
-  margin: auto;
-  box-sizing: border-box;
-  scroll-margin-top: 100px;
-}
-
-/* ボックスの外に出た見出し：他のセクションのh2と完全に見た目・位置が同期します */
+/* 共通の section / h2 スタイルをそのまま継承。個別上書きは最小限に留める */
 #news h2 {
-  font-size: 36px;
-  letter-spacing: 0.1em;
-  margin: 0 0 30px 0; /* 下の紺ボックスとの間に綺麗な余白を確保 */
-  line-height: 1;
+  margin-bottom: 30px; /* 共通の margin-bottom: 20px より少し広めに */
 }
 
-/* ★大改造：紺背景ボックス。ここがINFORMATIONの「I」の真下（ツラ）から始まります */
+/* 紺背景ボックス */
 .news-inner {
   background: var(--deep); /* 紺色の背景をこのリストの枠だけに適用 */
   padding: 30px 40px;      /* ニュース内容を内側に入れ込むための余白（上下を少しスマートに調整） */
@@ -836,10 +826,10 @@ footer {
 .news-item.is-empty .news-text {
   color: rgba(184, 192, 204, 0.2);
 }
-/* レスポンシブ表示（スマホ対応） */
-@media (max-width: 650px) {
+/* レスポンシブ表示（スマホ対応）※他セクションと同じ 600px で統一 */
+@media (max-width: 600px) {
   .news-inner {
-    padding: 20px 15px; /* スマホ時はボックス内の余白をタイトにして文字幅を広く */
+    padding: 20px 15px;
   }
   .news-item {
     flex-direction: column;

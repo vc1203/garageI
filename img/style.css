@@ -140,18 +140,65 @@ header h1 img {
 
 .hero-img-wrap {
   width: 100%;
-  height: 45vh; /* 大きすぎず小さすぎない絶妙なサイズ感 */
+  height: 45vh;
   min-height: 320px;
   max-height: 480px;
   overflow: hidden;
-  border-radius: 4px; /* サイト全体のカードの丸みに合わせて少しだけ角を丸く */
+  border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative; /* ドットの絶対配置の基準 */
 }
 
-.hero-img {
+/* スライドショー */
+.slideshow {
   width: 100%;
   height: 100%;
-  background: url("img/top_2.webp") center/cover no-repeat;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* ドットナビ */
+.slide-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .hero-text-box {
@@ -430,13 +477,14 @@ footer {
 }
 
 @media(max-width: 600px) {
-  header { padding: 20px 5%; }
+  header { padding: 15px 5%; }
   header h1 img { height: 35px; }
   .grid-3 { grid-template-columns: 1fr; }
   .hero-section { padding: 0 4% 20px 4%; }
   .hero-img-wrap { height: 30vh; min-height: 220px; }
   .hero-text-box { padding: 35px 10px 10px 10px; }
-  .hero-title { font-size: 28px; }
+  .hero-title { font-size: 32px; line-height: 1.3; }
+  h2 { font-size: 27px; line-height: 1.4; }
   .hero-desc { font-size: 0.9rem; }
   .nav-menu { gap: 10px; }
   .nav-menu a { font-size: 0.8rem; }
@@ -706,26 +754,14 @@ footer {
 }
 
 /* ==========================================================================
-   News（更新情報）セクション（見出し独立・ボックス内包型）
+   News（更新情報）セクション
    ========================================================================== */
-#news {
-  background: transparent; /* section全体の背景は透明に */
-  padding: 80px 5%;        /* 他の共通sectionと同じ左右5%の余白で「I」の左ツラを固定 */
-  max-width: 1200px;
-  margin: auto;
-  box-sizing: border-box;
-  scroll-margin-top: 100px;
-}
-
-/* ボックスの外に出た見出し：他のセクションのh2と完全に見た目・位置が同期します */
+/* 共通の section / h2 スタイルをそのまま継承。個別上書きは最小限に留める */
 #news h2 {
-  font-size: 36px;
-  letter-spacing: 0.1em;
-  margin: 0 0 30px 0; /* 下の紺ボックスとの間に綺麗な余白を確保 */
-  line-height: 1;
+  margin-bottom: 30px; /* 共通の margin-bottom: 20px より少し広めに */
 }
 
-/* ★大改造：紺背景ボックス。ここがINFORMATIONの「I」の真下（ツラ）から始まります */
+/* 紺背景ボックス */
 .news-inner {
   background: var(--deep); /* 紺色の背景をこのリストの枠だけに適用 */
   padding: 30px 40px;      /* ニュース内容を内側に入れ込むための余白（上下を少しスマートに調整） */
@@ -788,10 +824,10 @@ footer {
 .news-item.is-empty .news-text {
   color: rgba(184, 192, 204, 0.2);
 }
-/* レスポンシブ表示（スマホ対応） */
-@media (max-width: 650px) {
+/* レスポンシブ表示（スマホ対応）※他セクションと同じ 600px で統一 */
+@media (max-width: 600px) {
   .news-inner {
-    padding: 20px 15px; /* スマホ時はボックス内の余白をタイトにして文字幅を広く */
+    padding: 20px 15px;
   }
   .news-item {
     flex-direction: column;
